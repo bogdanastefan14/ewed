@@ -11,7 +11,8 @@ $GLOBALS['config'] = array(
         'host' => '127.0.0.1',
         'username' => 'root',
         'password' => 'root',
-        'db' => 'ewed'
+        'db' => 'ewed',
+        'port' => 8889
     ),
     'remember' => array(
         'cookie_name' => 'hash',
