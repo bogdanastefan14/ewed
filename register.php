@@ -47,6 +47,8 @@ if (Input::exists('post')) {
                    'join_date' => date('Y-m-d H:i:s'),
                    'group_num' => 1
                 ));
+
+                Redirect::to('login.php');
             } catch (Exception $e) {
                 die($e->getMessage());
             }
