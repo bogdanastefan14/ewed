@@ -100,7 +100,7 @@ class Validation {
 
     private function uniqueControl($table, $item, $value) {
         $a = $this->_db->get($table, array($item, '=', $value));
-        if ($a->getError() && $a->getCount()) {
+        if ($a->getCount()) {
             return false;
         }
         return true;
