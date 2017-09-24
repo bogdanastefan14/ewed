@@ -1,6 +1,5 @@
 <?php
 /**
-
  * Date: 22/09/2017
  * Time: 19:05
  */
@@ -28,7 +27,6 @@ class Session {
     public static function flash($name, $content = null) {
         if (self::exist($name)) {
             # if this message exist, remove it
-            # because we want to see the message just one.
             $session = self::get($name);
             self::delete($name);
             return $session;
