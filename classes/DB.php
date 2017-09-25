@@ -24,11 +24,45 @@ class DB {
             $dsn = 'mysql:host=' . $host . ';port=' . $port . ';dbname=' . $db_name;
 
             $this->_conn = new PDO($dsn, $username, $passwaord);
+            $this->initialize();
 
         } catch (PDOException $e) {
             die("Database Connection Failed. [" . $e->getMessage() . "]");
         }
+    }
 
+    private function initialize() {
+        $this->_conn->query(
+            "CREATE TABLE IF NOT EXISTS users
+                    (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        username   VARCHAR(50)  NOT NULL,
+                        password   VARCHAR(64)  NOT NULL,
+                        first_name VARCHAR(50)  NULL,
+                        last_name  VARCHAR(50)  NULL,
+                        join_date  DATETIME     NULL,
+                        group_num  INT          NULL,
+                        email      VARCHAR(200) NOT NULL,
+                        CONSTRAINT users_user_name_uindex
+                        UNIQUE (username),
+                        CONSTRAINT users_email_uindex
+                        UNIQUE (email)
+                    );
+                    CREATE TABLE IF NOT EXISTS groups
+                    (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        name VARCHAR(20) NULL,
+                        permissions TEXT NULL
+                    );
+                    
+                    CREATE TABLE IF NOT EXISTS users_session
+                    (
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        user_id INT NULL,
+                        hash VARCHAR(50) NULL
+                    );
+                    "
+        );
     }
 
     /*
