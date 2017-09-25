@@ -6,4 +6,4 @@
  
  # Progress
  
- - [x] **Register and Login Part Added**
+ - [x] **Added Register and Login Part**
